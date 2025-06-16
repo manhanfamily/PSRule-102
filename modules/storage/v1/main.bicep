@@ -2,7 +2,8 @@
 
 param name string = deployment().name
 
-param sku string = 'Standard_LRS'
+//param sku string = 'Standard_LRS'
+param sku string 
 
 param location string = resourceGroup().location
 
