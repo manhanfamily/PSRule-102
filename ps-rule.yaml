@@ -7,5 +7,5 @@ output:
 input:
   pathIgnore:
     - '*' # Exclude all files
-    - '!modules/**/*.test.bicep' # But allow, test files
-    - '!modules/**/*.bicepparam' # Finally, test bicep parameter files
+    - '!modules/**/*.tests.bicep' # But allow, test files
+
