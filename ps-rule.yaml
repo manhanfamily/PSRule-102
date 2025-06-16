@@ -1,2 +1,5 @@
 configuration:
   AZURE_BICEP_FILE_EXPANSION: true
+
+output:
+  culture: ['en-AU']
