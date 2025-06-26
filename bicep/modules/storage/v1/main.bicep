@@ -26,3 +26,20 @@ resource storageAccount 'Microsoft.Storage/storageAccounts@2023-05-01' = {
 
 
 }
+resource blobServices 'Microsoft.Storage/storageAccounts/blobServices@2019-06-01' = {
+  parent: storageAccount
+  name: 'default'
+  properties: {
+    cors: {
+      corsRules: []
+    }
+    deleteRetentionPolicy: {
+      enabled: true
+      days: 7
+    }
+    containerDeleteRetentionPolicy: {
+      enabled: true
+      days: 7
+    }
+  }
+}

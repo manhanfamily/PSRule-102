@@ -1,5 +1,5 @@
 ---
-# Synopsis: Ignore Network Security Group traversal rule as security rules in this template are dynamically created in array loop.
+# Synopsis: Ignore rac audit for vaults
 apiVersion: github.com/microsoft/PSRule/v1
 kind: SuppressionGroup
 metadata:
