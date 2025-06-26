@@ -6,6 +6,7 @@ module basicstorage '../main.bicep' = {
   params: {
     sku: 'Storage_LRS'
     location: location
+    accessTier_value: 'Cool'
     tags: {
       env: 'test'
     }
