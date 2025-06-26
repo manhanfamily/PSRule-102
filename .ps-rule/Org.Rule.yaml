@@ -21,16 +21,16 @@ spec:
         - 'dev'
       field: 'tags.env'
 
-# ---
-# # Synopsis: org only accept Storage only to HOT  - policy number pol011
-# apiVersion: github.com/microsoft/PSRule/v1
-# kind: Rule
-# metadata:
-#   name: Org.Azure.Hotstorage
-# spec:
-#   type:
-#   - Microsoft.Storage/storageAccounts
-#   condition:
-#     field: 'properties.accessTier'
-#     equals: 'hot'
+---
+# Synopsis: org only accept Storage only to HOT  - policy number pol011
+apiVersion: github.com/microsoft/PSRule/v1
+kind: Rule
+metadata:
+  name: Org.Azure.Hotstorage
+spec:
+  type:
+  - Microsoft.Storage/storageAccounts
+  condition:
+    field: 'properties.accessTier'
+    equals: 'hot'
     
