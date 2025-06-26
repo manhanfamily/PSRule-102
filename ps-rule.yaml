@@ -65,3 +65,5 @@ suppression:
   - kvtest001
   - kvtest002
   - kv-bicep-app-002
+  - sttest001
+  - test2334

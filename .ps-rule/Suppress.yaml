@@ -12,3 +12,19 @@ spec:
     type: '.'
     in:
       - 'Microsoft.KeyVault/vaults'
+
+
+---
+# Synopsis: Storage Accounts should only accept explicitly allowed traffic.
+apiVersion: github.com/microsoft/PSRule/v1
+kind: SuppressionGroup
+metadata:
+  name: Azure.Keyvault.RBAC
+  description: 'not to have rbac enabled for sandbox sub'
+spec:
+  rule:
+    - Azure.Storage.Firewall
+  if:
+    type: '.'
+    in:
+      - 'Microsoft.Storage/storageAccounts'
