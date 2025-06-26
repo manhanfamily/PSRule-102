@@ -1,3 +1,4 @@
+@description('Configures the location to deploy the Azure resources.')
 param location string = resourceGroup().location
 
 module basicstorage '../main.bicep' = {
@@ -5,8 +6,8 @@ module basicstorage '../main.bicep' = {
   params: {
     sku: 'Storage_LRS'
     location: location
-
+    tags: {
+      env: 'test'
+    }
   }
-
-
 }

@@ -32,3 +32,12 @@ jobs:
       uses: microsoft/ps-rule@v2.9.0
       with:
         modules: PSRule.Rules.Azure
+
+
+
+
+##Testing Azure Bicep code using PSRule
+##az-psrule-demo
+#https://github.com/matsest/az-psrule-demo/blob/main/bicep/modules/storage/v1/main.bicep
+#https://www.youtube.com/watch?v=3697rG8tkOI
+

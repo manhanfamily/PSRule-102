@@ -1,0 +1,48 @@
+#
+# Analyze repository with PSRule for Azure
+#
+
+# Note:
+# This workflow is designed to run in templated repositories to check Azure Infrastructure as Code.
+
+# For PSRule for Azure documentation see:
+# https://aka.ms/ps-rule-azure
+
+# For action details see:
+# https://aka.ms/ps-rule-action
+
+name: Analyze Azure resources
+
+# Run for main or PRs against main
+on:
+  push:
+    branches:
+    - main
+  pull_request:
+    branches:
+    - main
+  workflow_dispatch:
+
+jobs:
+  analyze:
+    name: Analyze repository
+    runs-on: ubuntu-latest
+    if: github.repository != 'Azure/PSRule.Rules.Azure-quickstart'
+    steps:
+
+    - name: Checkout
+      uses: actions/checkout@v4
+
+    # Run analysis by using the PSRule GitHub action.
+    - name: Run PSRule analysis
+      uses: microsoft/ps-rule@v2.9.0
+      with:
+        modules: 'PSRule.Rules.Azure'
+        outputFormat: Sarif
+        outputPath: reports/ps-rule-results.sarif
+
+    - name: Upload results to security tab
+      if: always()
+      uses: github/codeql-action/upload-sarif@v3
+      with:
+        sarif_file: reports/ps-rule-results.sarif

@@ -1,0 +1,36 @@
+# Copyright (c) Microsoft Corporation.
+# Licensed under the MIT License.
+
+# Note:
+# This files demonstrates using YAML-based rules.
+
+---
+# Synopsis: Azure resource must have an valid env tag set.
+apiVersion: github.com/microsoft/PSRule/v1
+kind: Rule
+metadata:
+  name: Org.Azure.Tags
+spec:
+  with:
+  - PSRule.Rules.Azure\Azure.Resource.SupportsTags
+  condition:
+    allOf:
+    - in:
+        - 'prod'
+        - 'test'
+        - 'dev'
+      field: 'tags.env'
+
+# ---
+# # Synopsis: org only accept Storage only to HOT  - policy number pol011
+# apiVersion: github.com/microsoft/PSRule/v1
+# kind: Rule
+# metadata:
+#   name: Org.Azure.Hotstorage
+# spec:
+#   type:
+#   - Microsoft.Storage/storageAccounts
+#   condition:
+#     field: 'properties.accessTier'
+#     equals: 'hot'
+    

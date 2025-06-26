@@ -7,10 +7,14 @@ param sku string
 
 param location string = resourceGroup().location
 
+param tags object = resourceGroup().tags
+@description('Tags to apply to the resource.')
+
 resource storageAccount 'Microsoft.Storage/storageAccounts@2023-05-01' = {
   name: name
   location: location
   kind: 'StorageV2'
+  tags: tags
   sku: {
     name: sku
   }
@@ -18,5 +22,6 @@ resource storageAccount 'Microsoft.Storage/storageAccounts@2023-05-01' = {
     minimumTlsVersion: 'TLS1_2'
     supportsHttpsTrafficOnly: true
     }
+
 
 }
