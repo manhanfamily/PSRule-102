@@ -25,6 +25,5 @@ spec:
   rule:
     - Azure.Storage.Firewall
   if:
-    type: '.'
-    in:
-      - 'Microsoft.Storage/storageAccounts'
+    field: '$.name'
+    equals: 'test2334'
