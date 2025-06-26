@@ -8,4 +8,7 @@ metadata:
 spec:
   rule:
     - Azure.KeyVault.RBAC
-
+  if:
+    type: '.'
+    in:
+      - 'Microsoft.KeyVault/vaults'
