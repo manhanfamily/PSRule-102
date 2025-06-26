@@ -1,0 +1,17 @@
+---
+# Synopsis: Storage Accounts should only accept explicitly allowed traffic.
+apiVersion: github.com/microsoft/PSRule/v1
+kind: SuppressionGroup
+metadata:
+  name: Azure.Storage.Firewall
+  description: 'not to have rbac enabled for sandbox sub'
+spec:
+  rule:
+    - Azure.Storage.Firewall
+  if:
+    allOf:
+      - field: properties.networkAcls.defaultAction
+        exists: false
+      - type: '.'
+        in:
+          - 'Microsoft.Storage/storageAccounts'

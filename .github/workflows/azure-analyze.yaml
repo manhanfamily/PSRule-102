@@ -40,6 +40,7 @@ jobs:
         modules: 'PSRule.Rules.Azure'
         outputFormat: Sarif
         outputPath: reports/ps-rule-results.sarif
+        debug: true
 
     - name: Upload results to security tab
       if: always()
