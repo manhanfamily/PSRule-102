@@ -1,0 +1,11 @@
+---
+# Synopsis: Ignore Network Security Group traversal rule as security rules in this template are dynamically created in array loop.
+apiVersion: github.com/microsoft/PSRule/v1
+kind: SuppressionGroup
+metadata:
+  name: Azure.Keyvault.RBAC
+  description: 'not to have rbac enabled for sandbox sub'
+spec:
+  rule:
+    - Azure.KeyVault.RBAC
+

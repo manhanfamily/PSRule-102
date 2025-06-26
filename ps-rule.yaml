@@ -58,6 +58,9 @@ suppression:
   Azure.Storage.BlobPublicAccess:
   - sttest001
   - test2334
+  Azure.Storage.SoftDelete:
+  - sttest001
+  - test2334
   Azure.KeyVault.Firewall:
   - kvtest001
   - kvtest002
