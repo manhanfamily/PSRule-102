@@ -13,7 +13,8 @@ module storage '../../../../../modules/storage/v1/main.bicep' = {
   name: 'storage-deployment'
   params: {
     name: 'stbicepapp002'
-
+    accessTier_value: 'Hot'
+    sku: 'Storage_LRS'
     // The Azure location must be valid
     // Try setting this to 'Antarctica'
     location: location
