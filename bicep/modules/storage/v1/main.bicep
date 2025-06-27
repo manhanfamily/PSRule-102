@@ -19,6 +19,12 @@ resource storageAccount 'Microsoft.Storage/storageAccounts@2023-05-01' = {
     name: sku
   }
   properties: {
+    networkAcls: {
+      bypass: 'AzureServices'
+      virtualNetworkRules: []
+      ipRules: []
+      defaultAction: 'Deny'
+    }
     accessTier: accessTier_value
     minimumTlsVersion: 'TLS1_2'
     supportsHttpsTrafficOnly: true

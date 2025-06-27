@@ -1,17 +1,18 @@
 ---
-# Synopsis: Storage Accounts should only accept explicitly allowed traffic.
+# Synopsis: Ignore Azure.Storage.Firewall rule for a specific Storage Account when networkAcls.defaultAction is not defined.
+# This directly addresses the error for a named resource: "Path properties.networkAcls.defaultAction: The field 'properties.networkAcls.defaultAction' does not exist."
 apiVersion: github.com/microsoft/PSRule/v1
 kind: SuppressionGroup
 metadata:
-  name: Azure.Storage.Firewall
-  description: 'not to have rbac enabled for sandbox sub'
+  name: IgnoreSpecificStorageFirewallMissingDefaultAction # A unique, descriptive name for this suppression
+  description: 'Ignore failures for Azure.Storage.Firewall rule on Storage Account "YourSpecificStorageAccountName" when the networkAcls.defaultAction property is missing.'
 spec:
   rule:
     - Azure.Storage.Firewall
   if:
-    allOf:
-      - field: properties.networkAcls.defaultAction
-        exists: false
-      - type: '.'
-        in:
+    allOf: # Use 'allOf' when ALL sub-conditions must be true
+      - field: '$.Name'          # Correctly refers to the 'Name' property of the resource
+        equals: 'test2334'       # Checks if the Name is exactly 'test2334'
+      - type: '.'                # Refers to the resource's Azure type
+        in:                      # Checks if the type is in the provided list
           - 'Microsoft.Storage/storageAccounts'
